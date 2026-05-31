@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thermal Engineering Workbench</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+ 
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="home-btn" onclick="showSection('dashboard')" aria-label="Home">
+    <span class="home-icon">⌂</span>
+    <span class="home-text">Dashboard</span>
+  </button>
+  <div class="topbar-center">
+    <h1>Thermal Engineering Workbench</h1>
+    <p>Design · Analyze · Visualize Thermal Systems</p>
+  </div>
+</header>
+ 
+<main>
+ 
+  <!-- ════════════════ DASHBOARD ════════════════ -->
+  <section id="dashboard">
+    <div class="section-header">
+      <span class="icon">⚙</span>
+      <h1>Control Panel</h1>
+      <span class="tag">Select Module</span>
+    </div>
+ 
+    <div class="stats-row">
+      <div class="stat-card" style="--accent-top:#1B5FBF">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Thermodynamic Cycles</span>
+      </div>
+      <div class="stat-card" style="--accent-top:#0F8A6A">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Analysis Tools</span>
+      </div>
+      <div class="stat-card" style="--accent-top:#7C3AED">
+        <span class="stat-num">PDF</span>
+        <span class="stat-label">Engineering Reports</span>
+      </div>
+    </div>
+ 
+    <div class="modules-label">Thermodynamic Cycles</div>
+    <div class="dashboard-grid">
+      <div class="dash-card" onclick="showSection('carnotCycle')" tabindex="0">
+        <span class="card-icon">🔥</span>
+        <h2>Carnot Cycle</h2>
+        <p>Ideal Heat Engine Analysis</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('ottoCycle')" tabindex="0">
+        <span class="card-icon">🚗</span>
+        <h2>Otto Cycle</h2>
+        <p>SI Engine Performance</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('dieselCycle')" tabindex="0">
+        <span class="card-icon">🚛</span>
+        <h2>Diesel Cycle</h2>
+        <p>CI Engine Performance</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('rankineCycle')" tabindex="0">
+        <span class="card-icon">🏭</span>
+        <h2>Rankine Cycle</h2>
+        <p>Steam Power Plant Analysis</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('braytonCycle')" tabindex="0">
+        <span class="card-icon">✈</span>
+        <h2>Brayton Cycle</h2>
+        <p>Gas Turbine Analysis</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('refrigerationCycle')" tabindex="0">
+        <span class="card-icon">❄</span>
+        <h2>Refrigeration System</h2>
+        <p>Vapor Compression Analysis</p>
+        <span class="arrow">›</span>
+      </div>
+    </div>
+ 
+    <div class="modules-label" style="margin-top:28px">Tools & Reference</div>
+    <div class="dashboard-grid">
+      <div class="dash-card" onclick="showSection('heatExchanger')" tabindex="0">
+        <span class="card-icon">🌡</span>
+        <h2>Heat Exchanger</h2>
+        <p>Heat Transfer Evaluation</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('comparisonDashboard')" tabindex="0">
+        <span class="card-icon">📊</span>
+        <h2>Performance Dashboard</h2>
+        <p>Cycle Efficiency Comparison</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('propertyDatabase')" tabindex="0">
+        <span class="card-icon">📚</span>
+        <h2>Thermal Properties</h2>
+        <p>Material &amp; Fluid Database</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('steamProperties')" tabindex="0">
+        <span class="card-icon">💨</span>
+        <h2>Steam Properties</h2>
+        <p>Steam Table Lookup</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('formulaLibrary')" tabindex="0">
+        <span class="card-icon">📘</span>
+        <h2>Formula Library</h2>
+        <p>Engineering Reference</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('advancedAnalysis')" tabindex="0">
+        <span class="card-icon">📈</span>
+        <h2>Advanced Analysis</h2>
+        <p>Cycle Ranking &amp; Insights</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('savedSimulations')" tabindex="0">
+        <span class="card-icon">💾</span>
+        <h2>Saved Analyses</h2>
+        <p>Stored Results</p>
+        <span class="arrow">›</span>
+      </div>
+      <div class="dash-card" onclick="showSection('reportCenter')" tabindex="0">
+        <span class="card-icon">📄</span>
+        <h2>Report Center</h2>
+        <p>Export &amp; Analysis Reports</p>
+        <span class="arrow">›</span>
+      </div>
+    </div>
+ 
+    <div class="info-grid">
+      <div class="card">
+        <h2>Thermodynamic States</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>State</th><th>Process</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Isothermal</td><td>Start of expansion at T_H</td></tr>
+              <tr><td>2</td><td>Adiabatic</td><td>End of isothermal expansion</td></tr>
+              <tr><td>3</td><td>Isothermal</td><td>Compression at T_L</td></tr>
+              <tr><td>4</td><td>Adiabatic</td><td>Return to initial state</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Engineering Insights</h2>
+        <ul class="insight-list">
+          <li>Carnot Cycle provides the maximum theoretical efficiency for any heat engine operating between two temperatures.</li>
+          <li>Otto Cycle represents spark ignition (gasoline) engines — efficiency increases with compression ratio.</li>
+          <li>Diesel Cycle typically offers higher efficiency than Otto at equal compression ratios.</li>
+          <li>Rankine Cycle is the foundation of thermal steam power plants worldwide.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ CARNOT ════════════════ -->
+  <section id="carnotCycle" class="hidden">
+    <div class="section-header">
+      <span class="icon">🔥</span>
+      <h1>Carnot Cycle Simulator</h1>
+      <span class="tag">Ideal Engine</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="highTemp">High Temperature — T<sub>H</sub> (K)</label>
+          <input type="number" id="highTemp" placeholder="e.g. 800" min="1" />
+        </div>
+        <div class="input-group">
+          <label for="lowTemp">Low Temperature — T<sub>L</sub> (K)</label>
+          <input type="number" id="lowTemp" placeholder="e.g. 300" min="1" />
+        </div>
+        <div class="input-group">
+          <label for="heatInput">Heat Input — Q<sub>H</sub> (kJ)</label>
+          <input type="number" id="heatInput" placeholder="e.g. 500" min="1" />
+        </div>
+        <button class="btn-primary" onclick="calculateCarnot()">Calculate Analysis</button>
+        <div id="carnotResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveCarnot()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">T-S Diagram</h2>
+        <canvas id="carnotChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ OTTO ════════════════ -->
+  <section id="ottoCycle" class="hidden">
+    <div class="section-header">
+      <span class="icon">🚗</span>
+      <h1>Otto Cycle Simulator</h1>
+      <span class="tag">SI Engine</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="compressionRatio">Compression Ratio (r)</label>
+          <input type="number" id="compressionRatio" placeholder="e.g. 8" min="1.1" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="gamma">Specific Heat Ratio (γ)</label>
+          <input type="number" id="gamma" placeholder="e.g. 1.4" min="1.01" step="0.01" />
+        </div>
+        <button class="btn-primary" onclick="calculateOtto()">Calculate Otto Cycle</button>
+        <div id="ottoResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveOtto()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">P-V Diagram</h2>
+        <canvas id="ottoChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ DIESEL ════════════════ -->
+  <section id="dieselCycle" class="hidden">
+    <div class="section-header">
+      <span class="icon">🚛</span>
+      <h1>Diesel Cycle Simulator</h1>
+      <span class="tag">CI Engine</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="dieselCompression">Compression Ratio (r)</label>
+          <input type="number" id="dieselCompression" placeholder="e.g. 16" min="1.1" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="cutoffRatio">Cutoff Ratio (r<sub>c</sub>)</label>
+          <input type="number" id="cutoffRatio" placeholder="e.g. 2" min="1.01" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="dieselGamma">Specific Heat Ratio (γ)</label>
+          <input type="number" id="dieselGamma" placeholder="e.g. 1.4" min="1.01" step="0.01" />
+        </div>
+        <button class="btn-primary" onclick="calculateDiesel()">Calculate Diesel Cycle</button>
+        <div id="dieselResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveDiesel()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">P-V Diagram</h2>
+        <canvas id="dieselChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ RANKINE ════════════════ -->
+  <section id="rankineCycle" class="hidden">
+    <div class="section-header">
+      <span class="icon">🏭</span>
+      <h1>Rankine Cycle Simulator</h1>
+      <span class="tag">Steam Plant</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="boilerPressure">Boiler Pressure (bar)</label>
+          <input type="number" id="boilerPressure" placeholder="e.g. 60" min="0.1" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="condenserPressure">Condenser Pressure (bar)</label>
+          <input type="number" id="condenserPressure" placeholder="e.g. 0.1" min="0.01" step="0.01" />
+        </div>
+        <div class="input-group">
+          <label for="turbineEfficiency">Turbine Isentropic Efficiency (%)</label>
+          <input type="number" id="turbineEfficiency" placeholder="e.g. 85" min="1" max="100" />
+        </div>
+        <button class="btn-primary" onclick="calculateRankine()">Calculate Rankine Cycle</button>
+        <div id="rankineResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveRankine()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">T-S Diagram</h2>
+        <canvas id="rankineChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ BRAYTON ════════════════ -->
+  <section id="braytonCycle" class="hidden">
+    <div class="section-header">
+      <span class="icon">✈</span>
+      <h1>Brayton Cycle Simulator</h1>
+      <span class="tag">Gas Turbine</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="pressureRatio">Pressure Ratio (r<sub>p</sub>)</label>
+          <input type="number" id="pressureRatio" placeholder="e.g. 10" min="1.1" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="braytonGamma">Specific Heat Ratio (γ)</label>
+          <input type="number" id="braytonGamma" placeholder="e.g. 1.4" min="1.01" step="0.01" />
+        </div>
+        <div class="input-group">
+          <label for="braytonT1">Inlet Temperature T<sub>1</sub> (K)</label>
+          <input type="number" id="braytonT1" placeholder="e.g. 300" min="200" step="1" />
+        </div>
+        <button class="btn-primary" onclick="calculateBrayton()">Calculate Brayton Cycle</button>
+        <div id="braytonResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveBrayton()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">T-S Diagram</h2>
+        <canvas id="braytonChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ REFRIGERATION ════════════════ -->
+  <section id="refrigerationCycle" class="hidden">
+    <div class="section-header">
+      <span class="icon">❄</span>
+      <h1>Refrigeration &amp; Air Conditioning</h1>
+      <span class="tag">VCR Cycle</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="refrigerationEffect">Refrigeration Effect Q<sub>L</sub> (kJ)</label>
+          <input type="number" id="refrigerationEffect" placeholder="e.g. 200" min="1" />
+        </div>
+        <div class="input-group">
+          <label for="compressorWork">Compressor Work W (kJ)</label>
+          <input type="number" id="compressorWork" placeholder="e.g. 80" min="1" />
+        </div>
+        <button class="btn-primary" onclick="calculateCOP()">Calculate COP</button>
+        <div id="refrigerationResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveRefrigeration()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">VCR Cycle P-h Diagram</h2>
+        <canvas id="refrigerationChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ HEAT EXCHANGER ════════════════ -->
+  <section id="heatExchanger" class="hidden">
+    <div class="section-header">
+      <span class="icon">🌡</span>
+      <h1>Heat Exchanger Analysis</h1>
+      <span class="tag">Heat Transfer</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="massFlowRate">Mass Flow Rate (kg/s)</label>
+          <input type="number" id="massFlowRate" placeholder="e.g. 2" min="0.01" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="specificHeat">Specific Heat C<sub>p</sub> (kJ/kg·K)</label>
+          <input type="number" id="specificHeat" placeholder="e.g. 4.18" min="0.01" step="0.01" />
+        </div>
+        <div class="input-group">
+          <label for="tempIn">Inlet Temperature (°C)</label>
+          <input type="number" id="tempIn" placeholder="e.g. 20" step="0.1" />
+        </div>
+        <div class="input-group">
+          <label for="tempOut">Outlet Temperature (°C)</label>
+          <input type="number" id="tempOut" placeholder="e.g. 80" step="0.1" />
+        </div>
+        <button class="btn-primary" onclick="calculateHeatExchanger()">Analyze</button>
+        <div id="heatResult" class="result-box"></div>
+        <button class="btn-secondary" onclick="saveHeatExchanger()" style="margin-top:10px">💾 Save Analysis</button>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">Temperature Profile</h2>
+        <canvas id="heatChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ COMPARISON ════════════════ -->
+  <section id="comparisonDashboard" class="hidden">
+    <div class="section-header">
+      <span class="icon">📊</span>
+      <h1>Thermal Performance Dashboard</h1>
+      <span class="tag">Comparison</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Compare All Cycles</h2>
+        <p class="hint-text">Run individual simulations first to compare real computed values. Default reference values will be used otherwise.</p>
+        <button class="btn-primary" onclick="showComparison()">Compare All Cycles</button>
+        <div id="comparisonResult" class="result-box"></div>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">Efficiency Comparison Chart</h2>
+        <canvas id="comparisonChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ PROPERTY DATABASE ════════════════ -->
+  <section id="propertyDatabase" class="hidden">
+    <div class="section-header">
+      <span class="icon">📚</span>
+      <h1>Thermal Property Database</h1>
+      <span class="tag">Materials &amp; Fluids</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="card">
+      <h2>Search Fluid or Material</h2>
+      <div class="search-wrap">
+        <input type="text" id="propertySearch" placeholder="Search by fluid name (e.g. Air, Water, Steam…)" oninput="searchProperty()" class="text-input" />
+        <span class="search-icon">⌕</span>
+      </div>
+      <div id="propertyResults" class="prop-grid"></div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ STEAM PROPERTIES ════════════════ -->
+  <section id="steamProperties" class="hidden">
+    <div class="section-header">
+      <span class="icon">💨</span>
+      <h1>Steam Property Lookup</h1>
+      <span class="tag">Steam Tables</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="steamPressure">Pressure (bar)</label>
+          <input type="number" id="steamPressure" placeholder="e.g. 1, 5, 10, 20, 40" min="0.1" step="0.1" />
+        </div>
+        <p class="hint-text" style="margin-bottom:8px">Available: 1, 5, 10, 20, 40, 60, 80, 100 bar</p>
+        <button class="btn-primary" onclick="lookupSteamProperties()">Lookup Properties</button>
+        <div id="steamResults" class="result-box"></div>
+      </div>
+      <div class="card">
+        <h2>Steam Table Reference</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>P (bar)</th><th>T<sub>sat</sub> (°C)</th><th>h<sub>g</sub> (kJ/kg)</th><th>s<sub>g</sub> (kJ/kg·K)</th></tr></thead>
+            <tbody id="steamTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ ADVANCED ANALYSIS ════════════════ -->
+  <section id="advancedAnalysis" class="hidden">
+    <div class="section-header">
+      <span class="icon">📈</span>
+      <h1>Advanced Thermal Analysis</h1>
+      <span class="tag">Insights</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Cycle Efficiency Ranking</h2>
+        <p class="hint-text">Rank all thermodynamic cycles by theoretical efficiency using standard reference values.</p>
+        <button class="btn-primary" onclick="analyzeCycles()">Analyze &amp; Rank Cycles</button>
+        <div id="analysisOutput" class="result-box"></div>
+        <div class="card" style="margin-top:20px;margin-bottom:0">
+          <h2>Engineering Recommendations</h2>
+          <ul class="insight-list">
+            <li>Increase compression ratio to improve Otto cycle efficiency.</li>
+            <li>Increase pressure ratio to improve Brayton cycle performance.</li>
+            <li>Improve condenser vacuum for better Rankine cycle efficiency.</li>
+            <li>Reduce thermal losses in heat exchangers with improved insulation.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <h2 class="chart-title">Efficiency Ranking Chart</h2>
+        <canvas id="analysisChart"></canvas>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ FORMULA LIBRARY ════════════════ -->
+  <section id="formulaLibrary" class="hidden">
+    <div class="section-header">
+      <span class="icon">📘</span>
+      <h1>Engineering Formula Library</h1>
+      <span class="tag">Reference</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="card">
+      <h2>Search Formulas</h2>
+      <div class="search-wrap">
+        <input type="text" id="formulaSearch" placeholder="Search by name or category (e.g. Carnot, Heat Transfer…)" oninput="searchFormula()" class="text-input" />
+        <span class="search-icon">⌕</span>
+      </div>
+    </div>
+    <div id="formulaResults" class="formula-grid"></div>
+  </section>
+ 
+  <!-- ════════════════ SAVED SIMULATIONS ════════════════ -->
+  <section id="savedSimulations" class="hidden">
+    <div class="section-header">
+      <span class="icon">💾</span>
+      <h1>Saved Simulations</h1>
+      <span class="tag">History</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="card">
+      <h2>Stored Analyses</h2>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="loadSavedSimulations()" style="max-width:200px">Load Saved Data</button>
+        <button class="btn-danger" onclick="clearStorage()" style="max-width:200px">🗑 Clear History</button>
+      </div>
+      <div id="savedOutput" style="margin-top:20px"></div>
+    </div>
+  </section>
+ 
+  <!-- ════════════════ REPORT CENTER ════════════════ -->
+  <section id="reportCenter" class="hidden">
+    <div class="section-header">
+      <span class="icon">📄</span>
+      <h1>Engineering Report Center</h1>
+      <span class="tag">Export</span>
+    </div>
+    <button class="back-btn" onclick="showSection('dashboard')">← Back to Dashboard</button>
+    <div class="two-col">
+      <div class="card">
+        <h2>Generate Report</h2>
+        <p class="hint-text">Creates a complete session summary with all calculations performed.</p>
+        <button class="btn-primary" onclick="generateReport()">Generate Summary</button>
+        <div id="reportOutput"></div>
+      </div>
+      <div class="card">
+        <h2>Simulation History</h2>
+        <p class="hint-text">All calculations from this session are logged here.</p>
+        <button class="btn-secondary" onclick="showHistory()">View History</button>
+        <div id="historyOutput"></div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+ 
+<footer>
+  <div class="footer-inner">
+    <p class="footer-title">Thermal Engineering Workbench</p>
+    <p class="footer-sub">Developed by <span class="footer-name">P. Veera Manikanta</span></p>
+  </div>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
